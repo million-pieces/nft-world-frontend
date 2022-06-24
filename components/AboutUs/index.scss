@@ -1,0 +1,92 @@
+.about-us {
+  margin-top: 5rem;
+  padding: 0 1.5rem;
+  color: white;
+  @include media-breakpoint-up(md) {
+    margin-top: 7.5rem;
+  }
+  @include media-breakpoint-up(sm) {
+    padding: 0 2rem;
+  }
+
+  &__row {
+    display: grid;
+    grid-template: repeat(3, auto) / 1fr 2fr;
+    gap: 1.5rem;
+
+    @include media-breakpoint-up(sm) {
+      grid-template: repeat(2, auto) / repeat(2, 2fr) 1fr;
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template: auto/repeat(4, auto);
+    }
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2rem 1.5rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+
+    &:first-of-type {
+      grid-column: span 2;
+      @include media-breakpoint-up(sm) {
+        grid-column: unset;
+      }
+    }
+
+    &-wide {
+      grid-column: span 2;
+      padding: 1rem;
+
+      @include media-breakpoint-up(sm) {
+        grid-column: span 3;
+      }
+
+      @include media-breakpoint-up(lg) {
+        grid-column: unset;
+        padding: 1.5rem;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__inner-block {
+    margin: 1rem auto 0;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  &__value {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  &__plus {
+    margin-left: -0.7rem;
+    color: transparent;
+    background: linear-gradient($primary-gradient);
+    background-position: right top;
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

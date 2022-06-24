@@ -1,0 +1,154 @@
+.country-value {
+  text-transform: capitalize;
+}
+.account-card {
+  color: #030935;
+  background: linear-gradient(74.53deg, #2771e9 0.04%, #792ee7 27.39%, #a82acc 58%, #d4504b 90.58%);
+
+  &:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.position-id {
+  max-width: 14.375rem;
+}
+
+.card-body {
+  background: #fff;
+}
+
+.img-form {
+  overflow: hidden;
+}
+
+.img-placeholder {
+  padding: 1.5rem;
+  font-size: 0.667rem;
+  background: rgba(3, 9, 53, 0.15);
+}
+
+.place-img {
+  width: 2.6875rem;
+  height: 2.125rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  @include media-breakpoint-up(sm) {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  & img {
+    width: 100%;
+  }
+}
+.account-btn {
+  width: 100%;
+  padding: 0.625rem;
+  @include media-breakpoint-up(lg) {
+    width: auto;
+    padding: 0.9375rem 3rem;
+  }
+}
+.website-link {
+  display: inline-flex;
+  align-items: center;
+  max-width: 12.5rem;
+  overflow: hidden;
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.website-link-input {
+  max-width: 100%;
+  padding: 0.3125rem 0.625rem;
+  font-weight: 400;
+  border: 1px solid lightgrey;
+  border-radius: 0.375rem;
+  &:focus {
+    border: 1px solid var(--indigo);
+    outline: 3px solid var(--indigo);
+  }
+}
+
+.edit-link-btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: 0.5px solid #ffffff;
+  border-radius: 0.5rem;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+
+// Themes
+
+.account-card.merge-item {
+  color: #ffffff;
+  background: unset;
+
+  &:first-of-type {
+    margin-top: 2.3125rem;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 2.5625rem;
+  }
+
+  .website-link-title,
+  .price {
+    font-weight: 400;
+  }
+
+  .website-link-title {
+    position: relative;
+    padding-right: 2.625rem;
+  }
+
+  .card-body {
+    padding: 0;
+    background: unset;
+  }
+
+  .img-form {
+    background: #20203e;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .img-placeholder {
+    padding: 1.25rem 0.8125rem 1.5625rem;
+    font-size: 0.625rem;
+
+    svg path {
+      stroke: #fff;
+    }
+  }
+  .website-link {
+    max-width: 9.375rem;
+  }
+  .website-link-input {
+    max-width: 8.125rem;
+  }
+
+  .unmerge-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 2rem;
+    height: 2rem;
+    margin-top: 0.625rem;
+    margin-left: 0.625rem;
+    background: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 0.625rem;
+    opacity: 0.5;
+    transition: ease-out 0.15s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

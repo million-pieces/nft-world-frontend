@@ -1,0 +1,90 @@
+.show {
+  display: block;
+}
+
+.modal {
+  top: 15%;
+}
+
+.modal-title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  font-family: Quicksand, sans-serif;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.125rem;
+  }
+}
+
+.modal-dialog {
+  z-index: 9999;
+  width: auto;
+  min-width: auto;
+  max-width: 34.5rem;
+  padding: 0.625rem 0.625rem 0;
+  border-radius: 1rem;
+
+  @include media-breakpoint-up(md) {
+    padding: 0.625rem 1.25rem 0;
+  }
+}
+
+.close-btn {
+  width: 1.125rem;
+  height: 1.125rem;
+
+  @include media-breakpoint-up(md) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.backdrop-show {
+  background-color: rgb(0, 0, 0);
+  cursor: default;
+  opacity: 0.7;
+}
+
+.modal-content {
+  width: 100%;
+  border-radius: 1rem;
+
+  @include media-breakpoint-up(md) {
+    margin: auto;
+  }
+}
+
+.modal-body {
+  height: auto;
+  padding: 0;
+  background: transparent;
+
+  &-text {
+    color: #a19fb7;
+  }
+}
+
+.modal-header {
+  display: flex;
+  color: #fff;
+  font-size: 1.125rem;
+  text-align: center;
+  background: transparent;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

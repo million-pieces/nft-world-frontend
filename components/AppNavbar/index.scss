@@ -1,0 +1,226 @@
+.app {
+  .navbar-collapse {
+    padding: 8rem 1.5rem 1rem;
+    background: radial-gradient(50% 50% at 50% 50%, #041054 47.25%, #051327 100%);
+    @include media-breakpoint-up(lg) {
+      padding: unset;
+      background: transparent;
+    }
+  }
+}
+.header {
+  width: 100%;
+  .navbar {
+    align-items: center;
+    padding: 1.5rem 2.381rem;
+  }
+  .loader {
+    position: fixed;
+    top: 44vh;
+    left: 50%;
+    z-index: 1060;
+    transform: translate(-50%, -50%);
+  }
+}
+.has-search {
+  width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+
+  @include media-breakpoint-up(lg) {
+    width: 9.5rem;
+    margin-right: 1.7143rem;
+    margin-bottom: auto;
+    margin-left: 0px;
+  }
+  @media (min-width: 1100px) {
+    width: 12.5rem;
+  }
+}
+
+.nav {
+  &bar {
+    position: relative;
+    z-index: 3;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding-top: 2.375rem;
+    padding-bottom: 2.375rem;
+    @include media-breakpoint-up(sm) {
+      align-items: center;
+    }
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: none;
+    }
+    &-brand {
+      top: 1.6875rem;
+      width: 8.125rem;
+      padding: 0;
+      @include media-breakpoint-up(sm) {
+        width: 11.25rem;
+      }
+      @include media-breakpoint-up(lg) {
+        position: relative;
+        top: auto;
+        bottom: 0.4rem;
+      }
+    }
+
+    &-collapse {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 110%;
+      z-index: 1;
+      display: block;
+      flex-direction: column;
+      height: 100%;
+      padding: 7.0625rem 1.5rem 1rem;
+      text-align: center;
+      opacity: 0;
+      transition: 0.5s;
+      @include media-breakpoint-up(lg) {
+        position: static;
+        flex-direction: row;
+        padding: 0;
+        background: transparent;
+        opacity: 1;
+      }
+
+      &.show {
+        left: 0;
+        opacity: 1;
+      }
+    }
+
+    &-btn {
+      position: relative;
+      z-index: 2;
+      &.connect-btn {
+        bottom: 0.1rem;
+        padding-top: 0.17rem;
+      }
+    }
+
+    &-toggler {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 1.5rem;
+      height: 1.2rem;
+      padding: 0;
+      outline: 0 !important;
+      &-icon {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: white;
+        border-radius: 0.2rem;
+        transition: 0.2s;
+      }
+      &-active {
+        top: 0.25rem;
+        width: 1.125rem;
+
+        & .navbar-toggler-icon {
+          &:first-child,
+          &:last-child {
+            position: absolute;
+            transform: rotate(45deg);
+          }
+          &:last-child {
+            transform: rotate(-45deg);
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &__actions-row {
+      display: flex;
+      justify-content: center;
+      @media screen and (max-width: $tablet) {
+        gap: 1rem;
+        margin-top: 6rem;
+      }
+    }
+  }
+}
+.about-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  background: linear-gradient(74.53deg, #d4504b 0.04%, #a82acc 27.39%, #792ee7 58%, #2771e9 90.58%);
+}
+a:hover {
+  text-decoration: none;
+}
+.countries-mode {
+  justify-content: center;
+  margin-top: 3rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: unset;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  &__txt {
+    display: inline-block;
+    margin-left: 0.3125rem;
+    color: #fff;
+  }
+}
+
+.merge-trigger {
+  transition: ease-out 0.18s;
+  &.active {
+    background: linear-gradient(74.53deg, #2771e9 0.04%, #792ee7 27.39%, #a82acc 58%, #d5504b 90.58%);
+    border: 0;
+  }
+}
+
+::v-deep {
+  .navbar-btn {
+    height: 3rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 500;
+    font-size: 1.0625rem;
+  }
+}
+
+.custom-switch {
+  padding-right: 1.7143rem;
+  line-height: 1.7;
+}
+
+.game-item {
+  margin-right: 1.7143rem;
+}
+
+.point-icon {
+  width: auto;
+  height: 2.235rem;
+}
+.clear-btn {
+  padding: 0;
+  font: inherit;
+  border: none;
+  outline: inherit;
+  cursor: pointer;
+}
+.navbar-brand {
+  width: 10.5843rem;
+}

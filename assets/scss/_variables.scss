@@ -1,0 +1,93 @@
+// $font-family-sans-serif: 'Poppin', system-ui, -apple-system, 'Segoe UI', Roboto,
+//   'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+//   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+
+// $font-size-base: 0.875rem;
+$font-weight-bold-light: 500;
+$font-small: 0.875rem;
+
+// colos
+// $body-bg: #040426;
+$primary: #2771e9;
+$secondary: #eeeded;
+$info: #792ee7;
+$danger: #d4504b;
+$pink: #a82acc;
+$dark: #030935;
+$dark-secondary: #cac3d9;
+$text-muted: #20203e;
+
+$success: #7fba7a;
+$warning: #ffce73;
+$cyan: #65e3c2;
+$black: #11142d;
+$main_color: #fff;
+$link_color: #6c5dd3;
+
+$popup_color: rgba(116, 63, 221, 0.95);
+
+$border-radius: 0.625rem !default;
+$border-radius-sm: 0.3125rem !default;
+$border-radius-lg: 1rem !default;
+$border-radius-xl: 1.5rem !default;
+$border-color: rgba($secondary, 0.3);
+$border-color-secondary: rgba($dark, 0.4);
+$border-radius-btn: 0.3333rem;
+
+$short-delay: 100ms;
+$long-delay: 300ms;
+
+$rainbow-gradient: linear-gradient(74.53deg, #d4504b 0.04%, #a82acc 27.39%, #792ee7 58%, #2771e9 90.58%);
+$primary-gradient: 74.53deg, $primary 0.04%, $info 27.39%, $pink 58%, $danger 90.58%;
+$primary-gradient-btn: 74deg, rgba(131, 42, 209, 1) 0%, rgba(39, 113, 233, 1) 40%, rgba(121, 46, 231, 1) 63%, rgba(168, 42, 204, 1) 84%,
+  rgba(212, 80, 75, 1) 94%; 
+$secondary-gradient-btn: 77.7deg, #2771E9 35%, #792EE7 70%, #A82ACC 100%;  
+$secondary-gradient-transparent-btn: 77.7deg, rgba(39, 113, 233, 0.5) 35%, rgba(121, 46, 231, 0.5) 70%, rgba(168, 42, 204, 0.5) 100%;  
+$danger-gradient-btn: 45.32deg,  #792EE7 0%, #A82ACC 50%, #fd534d 100%;
+$danger-gradient-transparent-btn:  45.32deg, rgba(121, 46, 231, 0.5) 0%, rgba(168, 42, 204, 0.5) 50%, rgba(253, 83, 77, 0.5) 100%;  
+$secondary-gradient: 169.15deg, rgba(white, 0.4) 0%, rgba($secondary, 0.2) 96.79%;
+
+$warning-gradient: 225deg, #fc6d4b 0%, #d74c78 100%;
+$slate-gradient: 180deg, #5e4499 0%, #9b99ff 48.44%, rgba(63, 70, 104, 0.96) 100%;
+$danger-gradient: 136.67deg, rgb(251, 37, 69) 8.34%, #601a31 95.26%;
+$info-gradient: 180deg, #1b417b 8.97%, #2e3e8c 60.29%, #111716 110.55%;
+
+$table-border-color: #464a5a;
+$slide-bg-color: #2b2b2b;
+
+$orange: #a54011;
+
+$blue-gradient: 143.56deg, #00161f -38.56%, #061726 -16.91%, #161b38 -9.88%, #322156 49.65%, #572a80 89.35%, #662d91 103.44%;
+
+// =====================================
+
+$primary-block-color: red;
+
+$warning-block-color: yellow;
+// $warning-gradient: yellow;
+
+//===========================================
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1920px,
+) !default;
+
+$tablet: 992px;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1470px,
+) !default;
