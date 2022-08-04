@@ -1,5 +1,5 @@
 <template>
-  <div id="main-map-container" ref="app" class="connections main-map-container" @wheel.prevent="scaleMap">
+  <div id="main-map-container" ref="mapContainer" class="connections main-map-container" @wheel.prevent="scaleMap">
     <canvas id="main-world-map"></canvas>
   </div>
 </template>

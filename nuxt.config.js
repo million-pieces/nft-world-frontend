@@ -212,12 +212,24 @@ export default {
         : process.env.SEGMENT_PRICE,
     NETWORK:
       process.env.DEPLOY == "DEV" ? process.env.D_NETWORK : process.env.DEPLOY == "STAGE" ? process.env.S_NETWORK : process.env.NETWORK,
+    NETWORK_GAME:
+      process.env.DEPLOY == "DEV"
+        ? process.env.D_NETWORK_GAME
+        : process.env.DEPLOY == "STAGE"
+        ? process.env.S_NETWORK_GAME
+        : process.env.NETWORK_GAME,
     NETWORK_CHAIN_ID:
       process.env.DEPLOY == "DEV"
         ? process.env.D_NETWORK_CHAIN_ID
         : process.env.DEPLOY == "STAGE"
         ? process.env.S_NETWORK_CHAIN_ID
         : process.env.NETWORK_CHAIN_ID,
+    NETWORK_GAME_CHAIN_ID:
+      process.env.DEPLOY == "DEV"
+        ? process.env.D_NETWORK_GAME_CHAIN_ID
+        : process.env.DEPLOY == "STAGE"
+        ? process.env.S_NETWORK_GAME_CHAIN_ID
+        : process.env.NETWORK_GAME_CHAIN_ID,
     OWNER_ADDRESS:
       process.env.DEPLOY == "DEV"
         ? process.env.D_OWNER_ADDRESS

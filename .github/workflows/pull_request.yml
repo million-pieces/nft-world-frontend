@@ -1,0 +1,26 @@
+name: Check pull request
+
+on:
+  pull_request:
+    branches:
+      - development
+      - master
+
+jobs:
+  check_build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      # Here you can place your actions
+      - name: Build the project
+        run: |
+          npm i
+          npm run build:dev

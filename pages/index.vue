@@ -9,7 +9,7 @@
           <div v-show="isPopupBlock" class="faded-bg" @click="unblockPopup"></div>
         </transition>
         <div :class="['map', isSideCardOpen ? 'map_s' : '']">
-          <app-loader v-if="isMapLoader" class="map-loader" />
+          <app-loader v-if="isMapLoader" class="app-loader" />
           <world-map :formatted-merged-segments="formattedMergedSegments" :is-map-data-ready="isMapDataReady" :world-map="worldMap" />
           <button class="reset-btn" @click="resetMap()">RESET</button>
         </div>
@@ -142,6 +142,7 @@ export default {
   },
 
   async mounted() {
+    this.autoLogin();
     this.manageSegments();
     const urlParams = new URLSearchParams(window.location.search);
 

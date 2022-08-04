@@ -13,7 +13,7 @@
   display: inline-block;
   width: 5rem;
   height: 5rem;
-  &.map-loader {
+  &.app-loader {
     position: absolute;
     top: 50%;
     left: 50%;

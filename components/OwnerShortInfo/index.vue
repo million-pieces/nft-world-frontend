@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+  <div v-else-if="theme === 'segmentEraPopup'" class="owner mt-1">
+    <img :src="avatar" class="owner__avatar" />
+    <div class="owner__main-info era-text">
+      <div v-if="ownerData.address" class="text-white text-left address-container">
+        <CopyLink :address="ownerData.address" :color="'white'" />
+      </div>
+      <span class="font-mont-bold text-white" :title="ownerData.name">{{ ownerData.name || "No nickname" }}</span>
+    </div>
+  </div>
   <div v-else class="owner">
     <img :src="avatar" alt="avatar" class="owner__avatar" />
     <div class="owner__title">Owner</div>
@@ -63,6 +72,10 @@ export default {
     line-height: 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  .era-text {
+    font-size: 0.7619rem;
+    line-height: 0.9524rem;
   }
 }
 </style>

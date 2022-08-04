@@ -1,0 +1,100 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: deploy
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - master
+      - development
+
+jobs:
+  development:
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    if: ${{ github.ref == 'refs/heads/development' }}
+    environment: Development
+    runs-on: [ 'self-hosted', 'dev' ]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Prepare .env
+        run: |
+          sed -i \
+            -e "s/FORTMATIC_KEY=/FORTMATIC_KEY=${FORTMATIC_KEY}/" \
+            -e "s/INFURA_KEY=/INFURA_KEY=${INFURA_KEY}/" \
+            -e "s/GOOGLE_ANALYTICS_ID=/GOOGLE_ANALYTICS_ID=${GOOGLE_ANALYTICS_ID}/" \
+          .env
+        env:
+          FORTMATIC_KEY: ${{ secrets.FORTMATIC_KEY }}
+          INFURA_KEY: ${{ secrets.INFURA_KEY }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+      - name: Building project
+        run: |
+          npm i
+          npm run build:dev
+
+      - name: Send Slack Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_ICON: 'https://github.com/fluidicon.png'
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: ${{ job.status == 'success' && 'Build is successful ✅' || (job.status == 'cancelled' && 'Build is cancelled ⏸' || 'Build is failing ❌') }}
+          SLACK_FOOTER: https://dev.millionpieces.io
+
+  production:
+    strategy:
+      matrix:
+        node-version: [16.x]
+    if: ${{ github.ref == 'refs/heads/master' }}
+    environment: Production
+    runs-on: [ 'self-hosted', 'prod' ]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Prepare .env
+        run: |
+          sed -i \
+            -e "s/FORTMATIC_KEY=/FORTMATIC_KEY=${FORTMATIC_KEY}/" \
+            -e "s/INFURA_KEY=/INFURA_KEY=${INFURA_KEY}/" \
+            -e "s/GOOGLE_ANALYTICS_ID=/GOOGLE_ANALYTICS_ID=${GOOGLE_ANALYTICS_ID}/" \
+          .env
+        env:
+          FORTMATIC_KEY: ${{ secrets.FORTMATIC_KEY }}
+          INFURA_KEY: ${{ secrets.INFURA_KEY }}
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+      - name: Build the project
+        run: |
+          npm i
+          npm run build:prod
+
+      - name: Send Slack Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_ICON: 'https://github.com/fluidicon.png'
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: ${{ job.status == 'success' && 'Build is successful ✅' || (job.status == 'cancelled' && 'Build is cancelled ⏸' || 'Build is failing ❌') }}
+          SLACK_FOOTER: https://nftworld.com

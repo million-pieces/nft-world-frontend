@@ -51,15 +51,15 @@
 
           <!-- Game link -->
           <div v-if="isMapPage" class="mb-5 mb-lg-0">
-            <nuxt-link to="/game">
+            <nuxt-link to="/nft-era">
               <button class="btn btn-border-primary-gradient btn-default text-white mr-lg-4 text-nowrap">Game</button>
             </nuxt-link>
           </div>
 
-          <!-- Side card on game page -->
+          <!-- Side card on nft-era game page -->
           <div v-if="isGamePage && address && isJoinedTheGame" :class="['mb-5', 'mb-lg-0', isGamePage ? 'game-item' : 'mr-lg-3 mr-xl-3']">
             <SideCardContainer :key="'gameSideCard'">
-              <SideCardGame />
+              <EraSideCard />
             </SideCardContainer>
           </div>
 
@@ -71,7 +71,7 @@
           </div>
 
           <!-- Get in the game -->
-          <div v-if="isGamePage && address && !isJoinedTheGame && !isWinnerWithImage" class="mb-5 mb-lg-0 game-item">
+          <div v-if="isGamePage && address && !isJoinedTheGame && isSegmentsOwner" class="mb-5 mb-lg-0 game-item">
             <button class="btn btn-border-primary-gradient btn-default text-white text-nowrap" @click="handleGameJoin">
               Get in the game
             </button>
@@ -161,10 +161,11 @@ export default {
   computed: {
     ...mapGetters({
       userSegments: "soldSegments/getUserSegments",
-      isJoinedTheGame: "game/getIsJoinedTheGame",
-      userGameBalance: "game/getUserGameBalance",
+      isJoinedTheGame: "era/getIsJoinedTheGame",
+      userGameBalance: "era/getUserGameBalance",
       user: "auth/user",
       isUserSegmentsVisible: "worldMap/getIsUserSegmentsVisible",
+      // userGameData: "era/getUserGameData",
     }),
 
     path() {
@@ -174,7 +175,10 @@ export default {
       return this.$route.path === "/";
     },
     isGamePage() {
-      return this.$route.path === "/game";
+      return this.$route.path.includes("/nft-era");
+    },
+    isSegmentsOwner() {
+      return this.userSegmentsInfo?.length > 0;
     },
   },
   watch: {
@@ -235,7 +239,7 @@ export default {
       changeCountryMode: "worldMap/changeCountryMode",
       setMapIsBlurred: "worldMap/setMapIsBlurred",
       setFilterValue: "worldMap/setFilterValue",
-      setIsTheGame: "game/setIsTheGame",
+      setIsTheGame: "era/setIsTheGame",
       blockPopup: "segmentPopupState/blockPopup",
     }),
 
@@ -253,7 +257,6 @@ export default {
     showEnteredTheGameNotification() {
       const notificationData = {
         header: "You have entered the game",
-        text: "Now select an unoccupied segment and click the Occupy button in the pop-up that opens",
         buttonText: "On to the victories ",
       };
       this.$nuxt.$emit("openGamePopup", notificationData);
@@ -271,7 +274,7 @@ export default {
 
     async joinTheGame() {
       try {
-        await this.$axios.$post(`${process.env.SERVER_GAME_URL}/api/game/connect`, {}, this.requestConfig);
+        await this.$axios.$post(`${process.env.SERVER_URL}/game/user/join`, {}, this.requestConfig);
         this.showEnteredTheGameNotification();
         this.setIsTheGame(true);
       } catch (error) {
@@ -283,24 +286,10 @@ export default {
     },
 
     handleGameJoin() {
-      const isSegmentOwner = () => {
-        return this.userGraph?.tokens.length > 0;
+      let joinData = {
+        header: "Get in the game",
+        buttonText: "Get in the game",
       };
-      let joinData = null;
-      if (isSegmentOwner()) {
-        joinData = {
-          header: "Get in the game",
-          buttonText: "Get in the game",
-          note: "Since you are the owner of the NFT project, participation is free for you.",
-        };
-      } else {
-        joinData = {
-          header: "Get in the game",
-          buttonText: "Get in the game for",
-          price: 100,
-          note: "This is a beta version of the game, so participation is free. Simply click on the button.",
-        };
-      }
 
       this.$nuxt.$emit("openJoinGamePopup", joinData, this.joinTheGame);
     },
@@ -336,20 +325,10 @@ export default {
     handleGame() {
       this.$nuxt.$emit("openGamePopup");
     },
-
-    async logInAccount() {
-      try {
-        await this.$axios.$post(`${process.env.SERVER_URL}/auth/eth`, {address: this.address, signature: this.signature});
-      } catch (error) {
-        console.error("not authorized");
-      }
-    },
-
     async highlightUserSegments() {
       if (this.userSegmentsInfo.length) {
         return;
       }
-      await this.logInAccount();
       this.getUserSegmentsInfo();
     },
 

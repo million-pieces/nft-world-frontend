@@ -24,7 +24,6 @@ export const actions = {
     // clear old data
     this.$localForage.setItem("eth_signature", null);
     this.$localForage.setItem("eth_address", null);
-    this.$localForage.setItem("provider", null);
     commit("LOGIN", {address: null, balance: null, signature: null});
 
     const auth = async () => {
@@ -62,7 +61,6 @@ export const actions = {
         let networkId = await this.$web3().eth.net.getId();
         try {
           await this.$alertIfIncorrectNetwork(networkId);
-          await this.$axios.$post(`${process.env.SERVER_URL}/auth/eth`, {address, signature});
         } catch (error) {
           console.error(error);
         }
@@ -95,12 +93,12 @@ export const actions = {
     const signature = await this.$localForage.getItem("eth_signature");
     const balance = this.$web3().utils.fromWei(await this.$web3().eth.getBalance(address), "ether");
 
-    // if (!address || !signature) {
-    //   return false;
-    // }
+    if (!address || !signature) {
+      return false;
+    }
 
     if (!state.addressChangeSubscribe) {
-      this.$ethereum()?.on("accountsChanged", () => dispatch("login"));
+      this.$ethereum().on("accountsChanged", () => dispatch("login"));
       commit("SET_CHAIN_CHANGE_SUBSCRIBE");
     }
 
@@ -123,8 +121,8 @@ export const mutations = {
       return;
     }
 
-    state.signature = signature || "";
-    state.address = address || "";
+    state.signature = signature || null;
+    state.address = address || null;
     state.isLoggedIn = true;
   },
 

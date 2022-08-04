@@ -1,0 +1,137 @@
+.era-popup__cave {
+  width: 33.33%;
+  height: 100%;
+  padding-right: 0.5715rem;
+  .cave__logo-container {
+    display: flex;
+    align-items: center;
+    height: 1.5238rem;
+    line-height: 1;
+    svg {
+      width: auto;
+      height: 100%;
+    }
+    .cave__logo-description {
+      margin-left: 0.381rem;
+      font-weight: 500;
+    }
+  }
+  div,
+  figure {
+    margin-bottom: 0.8571rem;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+  .nft-era__button {
+    width: 100%;
+  }
+}
+.era-popup__cave-container {
+  height: 14.762rem;
+  padding-top: 0.2381rem;
+  overflow: auto;
+}
+.cave__loader {
+  transform: translate(-50%, -50%);
+}
+.cave__villagers-amount {
+  display: flex;
+  align-items: center;
+  height: 0.7619rem;
+  padding-top: 1rem;
+  font-size: 0.7619rem;
+  svg {
+    width: auto;
+    height: 100%;
+    margin-right: 0.4376rem;
+  }
+}
+.villager-view__income {
+  width: 8rem;
+}
+.cave__villager {
+  font-size: 0.6667rem;
+  line-height: 0.8571rem;
+}
+.era-popup__create-cave-container {
+  position: relative;
+  width: 33.33%;
+  height: 16.8572rem;
+}
+.era-popup__create-cave {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-right: 0.2857rem;
+  margin-left: 0.2857rem;
+  padding: 0.4762rem;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(31, 23, 47, 1);
+  border: dashed 0.0476rem white;
+  cursor: pointer;
+  .create-cave__bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 80%;
+    transform: translate(-50%, -50%);
+  }
+  .era-popup__caves {
+    :last-child {
+      .era-popup__create-cave-container {
+        .era-popup__create-cave {
+          margin-right: 0rem;
+        }
+      }
+    }
+    :first-child {
+      .era-popup__create-cave-container {
+        .era-popup__create-cave {
+          margin-left: 0rem;
+        }
+      }
+    }
+  }
+  .create-cave__header {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 0.7619rem;
+  }
+  .create-cave__header-box {
+    margin-bottom: 0.8571rem;
+
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .mini-point {
+    width: auto;
+    height: 0.5625rem;
+  }
+}
+.without-residents {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 9.6189rem;
+  &__text {
+    font-size: 0.6667rem;
+    line-height: 0.8571rem;
+    letter-spacing: 0.03em;
+  }
+}
+.resident-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 7.1429rem;
+}
+p {
+  margin-bottom: 0;
+  padding-bottom: 0.0952rem;
+}

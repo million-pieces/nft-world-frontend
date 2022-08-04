@@ -1,7 +1,7 @@
 <template>
   <section id="game" class="game">
-    <app-loader v-if="isMapLoading" class="game-map-loader map-loader"></app-loader>
-    <div id="game-map-container" ref="app" class="game-map-container connections" @wheel.prevent="scaleMap">
+    <app-loader v-if="isMapLoading" class="game-map-loader app-loader"></app-loader>
+    <div ref="mapContainer" class="game-map-container map-container connections" @wheel.prevent="scaleMap">
       <transition name="fade">
         <segment-popup />
       </transition>
