@@ -7,6 +7,7 @@ import MultiSend from "@/build/abis/MultiSend.json";
 import Piece from "@/build/abis/Piece.json";
 import SegmentsAirdrop from "@/build/abis/SegmentsAirdrop.json";
 import PieceBalance from "@/build/abis/PieceBalance.json";
+import Game from "@/build/abis/Game.json";
 
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import WalletLink from "walletlink";
@@ -46,6 +47,7 @@ export default (ctx, inject) => {
     piece: () => new web3obj.eth.Contract(Piece, process.env.PIECE_ADDRESS),
     segmentsAirdrop: () => new web3obj.eth.Contract(SegmentsAirdrop, process.env.SEGMENTS_AIRDROP),
     pieceBalance: () => new web3obj.eth.Contract(PieceBalance, process.env.PIECE_BALANCE),
+    game: () => new web3obj.eth.Contract(Game, "0xE6E8C8E954fc0BcC0C8c9abf2F127072b3836429"),
   };
 
   const setWeb3Provider = async (p) => {
@@ -164,6 +166,73 @@ export default (ctx, inject) => {
     }
   };
 
+  const addGameNetwork = async (targetChainId) => {
+    try {
+      await ethereum().request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            chainId: targetChainId,
+            chainName: process.env.NETWORK_GAME,
+            rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
+            nativeCurrency: {
+              name: "Polygon",
+              symbol: "MATIC",
+              decimals: 18,
+            },
+          },
+        ],
+      });
+    } catch (error) {
+      alert(`please add ${process.env.NETWORK_GAME} network!`);
+    }
+  };
+
+  const switchChainIdToPolygon = async () => {
+    if (providerName !== "injected") return;
+    if (ethereum()) {
+      // switch network to env
+      const chainId = await ethereum().request({method: "eth_chainId"});
+      let targetChainId = process.env.NETWORK_GAME_CHAIN_ID;
+      // Polygon chainId not work without that
+      targetChainId = Web3.utils.toHex(targetChainId);
+      if (chainId !== targetChainId) {
+        try {
+          await ethereum().request({
+            method: "wallet_switchEthereumChain",
+            params: [{chainId: targetChainId}],
+          });
+        } catch (error) {
+          // if user has no network
+          if (error.code === 4902) {
+            addGameNetwork(targetChainId);
+          } else {
+            alert(`Please switch network to ${process.env.NETWORK_GAME}!`);
+          }
+          console.error(error);
+        }
+      }
+    }
+  };
+
+  const takeAveragePolygonGasPrice = async () => {
+    let averageGasData;
+    if (process.env.NETWORK_GAME === "polygon") {
+      averageGasData = await fetch("https://gasstation-mainnet.matic.network/v2")
+        .then((response) => response.json())
+        .then((json) => json);
+    } else {
+      averageGasData = await fetch("https://gasstation-mumbai.matic.today/v2")
+        .then((response) => response.json())
+        .then((json) => json);
+    }
+    let gasPrice = averageGasData.standard.maxFee;
+    gasPrice = Math.ceil(gasPrice, -4);
+    gasPrice = gasPrice.toString();
+    gasPrice = web3().utils.toWei(gasPrice, "Gwei");
+    return gasPrice;
+  };
+
   const alertIfIncorrectNetwork = async (network) => {
     const selectedNetwork = getNetworkName(network);
     if (selectedNetwork !== process.env.NETWORK.toLowerCase()) {
@@ -179,6 +248,8 @@ export default (ctx, inject) => {
   ctx.$setWeb3Provider = setWeb3Provider;
   ctx.$alertIfIncorrectNetwork = alertIfIncorrectNetwork;
   ctx.$switchChainId = switchChainId;
+  ctx.$switchChainIdToPolygon = switchChainIdToPolygon;
+  ctx.$takeAveragePolygonGasPrice = takeAveragePolygonGasPrice;
   ctx.$addPieceTokens = addPieceTokens;
   inject("web3", web3);
   inject("ethereum", ethereum);
@@ -186,5 +257,7 @@ export default (ctx, inject) => {
   inject("setWeb3Provider", setWeb3Provider);
   inject("alertIfIncorrectNetwork", alertIfIncorrectNetwork);
   inject("switchChainId", switchChainId);
+  inject("switchChainIdToPolygon", switchChainIdToPolygon);
+  inject("takeAveragePolygonGasPrice", takeAveragePolygonGasPrice);
   inject("addPieceTokens", addPieceTokens);
 };

@@ -173,6 +173,9 @@ export default {
       if (this.featuredSegment.avatar == null) {
         return null;
       }
+      if (this.featuredSegment.avatar == "") {
+        return null;
+      }
       return `${process.env.SERVER_URL}/files/users/avatars/${this.featuredSegment.avatar}`;
     },
     segmentType() {

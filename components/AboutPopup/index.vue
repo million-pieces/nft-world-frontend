@@ -20,7 +20,7 @@
                   <a href="https://nftworldcom.medium.com/" target="_blank" rel="noreferrer noopener">
                     <MediumIcon width="40" height="40" fill="white" />
                   </a>
-                  <a href="https://millionpieces.gitbook.io/millionpieces/" target="_blank" rel="noreferrer noopener">
+                  <a href="https://mp0.gitbook.io/new/" target="_blank" rel="noreferrer noopener">
                     <GitBookIcon width="70" height="40" fill="white" />
                   </a>
                 </div>

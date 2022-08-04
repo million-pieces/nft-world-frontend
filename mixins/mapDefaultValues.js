@@ -44,12 +44,14 @@ export default {
     mapStaticHeight: null,
     segmentWidthFactor: 0.9,
     isDestroyMap: false,
+    //colors
+    baseSegmentColor: "0xfffffd",
   }),
   methods: {
     // --------MAP-EVENTS----
     addEventListeners() {
       //move & scroll map
-      this.worldEvents = new hammer(this.$refs.app);
+      this.worldEvents = new hammer(this.$refs.mapContainer);
       this.worldEvents.on("panstart", (ev) => this.pointerDown(ev));
       this.worldEvents.on("panmove", (ev) => this.pointerMove(ev));
       this.worldEvents.on("panend", () => this.pointerUp());

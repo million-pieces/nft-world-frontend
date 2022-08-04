@@ -1,41 +1,40 @@
-// Import Bootstrap and BootstrapVue source SCSS files
 @import "~bootstrap/scss/bootstrap";
 @import "~animate.css/animate";
 @import "./general";
 @import "./variables";
 
 @font-face {
-  font-family: "Mont";
   font-weight: 300;
+  font-family: "Mont";
   src: local("Mont"), url("~assets/fonts/Mont/Mont-Light.otf");
 }
 @font-face {
-  font-family: "Mont";
   font-weight: 400;
+  font-family: "Mont";
   src: local("Mont"), url("~assets/fonts/Mont/Mont-Regular.otf");
 }
 @font-face {
-  font-family: "Mont";
   font-weight: 600;
+  font-family: "Mont";
   src: local("Mont"), url("~assets/fonts/Mont/Mont-SemiBold.otf");
 }
 @font-face {
-  font-family: "Mont";
   font-weight: 700;
+  font-family: "Mont";
   src: local("Mont"), url("~assets/fonts/Mont/Mont-Bold.otf");
 }
 @font-face {
-  font-family: "Mont";
   font-weight: 800;
+  font-family: "Mont";
   src: local("Mont Bolder"), url("~assets/fonts/Mont/Mont-Black.otf");
 }
 
 /* ---------- common ---------- */
 html,
 body {
+  width: 100%;
   height: 100%;
   overflow: hidden;
-  width: 100%;
 }
 html {
   font-size: 14px;
@@ -52,36 +51,34 @@ html {
   height: 100%;
 }
 
-.screen-full-height{
+.screen-full-height {
   height: 100vh;
   overflow: hidden;
 }
 
-
 .app {
-  background-color: #030303;
-  width: 100%; 
   position: relative;
-  
+  width: 100%;
+  background-color: #030303;
 
   @include media-breakpoint-down(sm) {
     background-size: auto 100vh;
   }
 
   &-secondary {
-    background-image: url("~assets/images/wires.png"), url("~assets/images/wire-map.png"),
-      radial-gradient(100% 100% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
-    background-position: center, bottom;
-    background-repeat: no-repeat;
-    background-size: auto, 100% auto;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    background-image: url("~assets/images/wires.png"), url("~assets/images/wire-map.png"),
+      radial-gradient(100% 100% at 0% 0%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+    background-repeat: no-repeat;
+    background-position: center, bottom;
+    background-size: auto, 100% auto;
 
     .unlock-modal {
       background: rgba(#fff, 0.5) !important;
     }
-    
+
     .navbar-brand-img {
       content: url("~assets/images/icon/dark-logo.svg");
     }
@@ -102,11 +99,11 @@ html {
       }
     }
     .form-control {
+      font-size: 0.875rem;
       background-color: $dark;
       border-color: rgba($dark, 0.4);
       border-radius: 0.625rem;
       -webkit-text-fill-color: rgba($dark, 0.15);
-      font-size: 0.875rem;
       &:placeholder {
         background-color: rgba($dark, 0.5);
         -webkit-text-fill-color: rgba($dark, 0.5) !important;
@@ -138,13 +135,13 @@ html {
 
 .app-wrap {
   position: relative;
-  height: 100%;
   z-index: 1;
+  height: 100%;
 }
- 
+
 .highlighted {
   color: #ef7486;
-} 
+}
 
 .app-bg {
   position: absolute;
@@ -158,10 +155,10 @@ html {
   }
 
   img {
-    object-fit: cover;
-    object-position: center;
     width: 100%;
     height: auto;
+    object-fit: cover;
+    object-position: center;
 
     @include media-breakpoint-down(sm) {
       width: auto;
@@ -171,8 +168,8 @@ html {
 }
 
 body {
-  font-family: "Mont", sans-serif;
   font-weight: 600;
+  font-family: "Mont", sans-serif;
 }
 ::-webkit-scrollbar {
   width: 7px;
@@ -205,26 +202,26 @@ input[type="number"] {
 
   &-primary {
     &-gradient {
-      border-image-source: linear-gradient($primary-gradient);
-      -webkit-border-image-source: linear-gradient($primary-gradient);
       border-top: 0;
       border-right: 0;
       border-left: 0;
+      -webkit-border-image-source: linear-gradient($primary-gradient);
+      border-image-source: linear-gradient($primary-gradient);
     }
   }
 
   &-secondary {
     &-gradient {
-      border-image-source: linear-gradient($secondary-gradient);
       -webkit-border-image-source: linear-gradient($secondary-gradient);
+      border-image-source: linear-gradient($secondary-gradient);
     }
   }
 
   &-primary,
   &-secondary {
     &-gradient {
-      border-image-slice: 1;
       -webkit-border-image-slice: 1;
+      border-image-slice: 1;
     }
   }
 }
@@ -234,22 +231,22 @@ input[type="number"] {
     position: relative;
 
     &::after {
-      content: "";
       display: block;
       padding-bottom: 100%;
+      content: "";
     }
   }
 
   &-box,
   &-img {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    margin: auto;
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    margin: auto;
 
     &.ovaled {
       padding: 11%;
@@ -293,6 +290,14 @@ input[type="number"] {
     }
   }
   &-gradient {
+    &-light {
+      display: inline-block;
+      font-weight: bold;
+      background: linear-gradient($light-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     &-primary {
       background: linear-gradient($primary-gradient);
     }
@@ -313,10 +318,10 @@ input[type="number"] {
       }
 
       &-border {
+        text-decoration: none !important;
         background: -webkit-linear-gradient(225deg, #fc6d4b 0%, #d74c78 100%);
         border-bottom: 1px solid $pink !important;
         border-radius: 0 !important;
-        text-decoration: none !important;
       }
     }
 
@@ -325,9 +330,9 @@ input[type="number"] {
     &-warning,
     &-warning-border,
     &-secondary {
-      background-clip: text;
-      -webkit-background-clip: text;
       display: inline-block;
+      -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
@@ -357,17 +362,6 @@ input[type="number"] {
 }
 
 /* custom general clases */
-// .title {
-//   font-size:  1.625rem;
-//   font-weight: 600;
-//   line-height:  2.4375rem;
-//   text-transform: capitalize;
-
-//   @include media-breakpoint-up(lg) {
-//     font-size:  2.25rem;
-//     line-height: 3.375rem;
-//   }
-// }
 
 .opacity {
   &-0 {
@@ -397,19 +391,19 @@ input[type="number"] {
 
 .dropdown {
   &-address {
-    font-size: 0.9375rem;
+    top: 20%;
+    right: 0;
     left: 0;
+    width: 18.75rem;
     margin: auto;
     padding: 1.375rem 2rem 3rem;
-    right: 0;
+    font-size: 0.9375rem;
     text-align: left;
-    top: 20%;
-    width: 18.75rem;
     @include media-breakpoint-up(lg) {
-      left: auto;
-      padding: 1.375rem 1.625rem 2.4375rem;
       top: calc(100% + 1.5rem);
+      left: auto;
       width: 22.1875rem;
+      padding: 1.375rem 1.625rem 2.4375rem;
     }
     &-content {
       position: static;
@@ -420,16 +414,16 @@ input[type="number"] {
     }
 
     &-icon {
-      height: 1.125rem;
       width: 1.125rem;
+      height: 1.125rem;
     }
 
     &-item {
       border-radius: 0.5rem !important;
 
       @include media-breakpoint-up(lg) {
-        transform: translateX(0);
         width: auto;
+        transform: translateX(0);
       }
 
       &:hover {
@@ -438,37 +432,38 @@ input[type="number"] {
 
       &:first-child,
       &:nth-child(2) {
-        padding-left: 1.875rem;
         padding-right: 1.875rem;
+        padding-left: 1.875rem;
       }
 
       &:first-child {
-        padding-bottom: 0.625rem;
         padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
       }
 
       &:last-child {
-        padding-bottom: 0.625rem;
         padding-top: 0.625rem;
+        padding-bottom: 0.625rem;
       }
     }
   }
 }
 
 .btn {
-  border-radius: $border-radius-btn;
-  font-size: 0.7619rem;
-  padding: 0.9375rem 1.5238rem;
   position: relative;
+  padding: 0.9375rem 1.5238rem;
+  font-size: 0.7619rem;
+  border-radius: $border-radius-btn;
   @include media-breakpoint-up(sm) {
     font-size: 1rem;
   }
+
   &.bg-primary-gradient {
     background: linear-gradient($primary-gradient-btn);
+    background-position: right top;
     background-size: 200% auto;
-    background-position: right top; 
-    transition: 0.5s;
     box-shadow: none !important;
+    transition: 0.5s;
     &:hover {
       background-position: left bottom;
     }
@@ -478,12 +473,12 @@ input[type="number"] {
   }
   &.bg-secondary-gradient {
     background: linear-gradient($secondary-gradient-btn);
+    background-position: right top;
     background-size: 200% auto;
-    background-position: right top; 
-    transition: 0.5s;
     box-shadow: none !important;
+    transition: 0.5s;
 
-    &.not-enough-point{
+    &.not-enough-point {
       background: linear-gradient($secondary-gradient-transparent-btn);
     }
 
@@ -494,16 +489,16 @@ input[type="number"] {
       outline: 1px solid #fff;
     }
   }
-  
+
   &.bg-danger-gradient {
     background: linear-gradient($danger-gradient-btn);
+    background-position: right top;
     background-size: 200% auto;
-    background-position: right top; 
-    transition: 0.5s;
     box-shadow: none !important;
-    &.not-enough-point{
+    transition: 0.5s;
+    &.not-enough-point {
       background: linear-gradient($danger-gradient-transparent-btn);
-    } 
+    }
     &:hover {
       background-position: left bottom;
     }
@@ -518,34 +513,33 @@ input[type="number"] {
     margin-bottom: 0.1905rem;
   }
 
-  &.not-enough-point{ 
-    color: rgba(255, 255, 255, 0.5)!important;
-    img{
-     opacity: 0.5;  
+  &.not-enough-point {
+    color: rgba(255, 255, 255, 0.5) !important;
+    img {
+      opacity: 0.5;
     }
-    &::after{
-      content: 'Not enough tokens';
-      width:9.0317rem;
-      height: 3.9125rem;
+    &::after {
       position: absolute;
       top: -2.3809rem;
       left: 50%;
+      box-sizing: border-box;
+      width: 9.0317rem;
+      height: 3.9125rem;
       padding: 18.9999px 0.619rem 0.4762rem;
-      transform: translateX(-50%); 
-      background: url(../../assets/images/Union.svg) no-repeat; 
-      background-size: 100%;
-      box-sizing: border-box; 
-      font-size: 12.0015px;
-      line-height: 0.6667rem; 
-      text-align: center;
       color: white;
+      font-size: 12.0015px;
+      line-height: 0.6667rem;
+      text-align: center;
+      background: url(../../assets/images/Union.svg) no-repeat;
+      background-size: 100%;
+      transform: translateX(-50%);
       opacity: 0;
       transition: $short-delay;
-      
+      content: "Not enough tokens";
     }
-    &:hover:after{
+    &:hover:after {
       opacity: 1;
-    } 
+    }
   }
 
   &-outline-dark {
@@ -556,91 +550,140 @@ input[type="number"] {
       }
     }
   }
-  
-  &-default{
+
+  &-default {
     height: 2.4762rem;
     padding-top: 0.0952rem;
     padding-bottom: 0;
     font-weight: 500;
-    font-size: 1.0476rem; 
+    font-size: 1.0476rem;
   }
-  &-border{
-    &-primary{
-      &-gradient{
-        height: calc(2.4762rem - 2px) ; 
-        background-color: transparent;
+  &-border {
+    &-primary {
+      &-gradient {
         z-index: 1;
-        &:hover{
+        height: calc(2.4762rem - 2px);
+        background-color: transparent;
+        &:hover {
           transition: 3s;
         }
-        &::after{
-          content: '';
+        &::after {
           position: absolute;
           top: -1px;
+          right: -1px;
           bottom: -1px;
           left: -1px;
-          right: -1px;
-          background: linear-gradient($primary-gradient);
-          border-radius:$border-radius-btn;
-          opacity:0;
-          transition: $long-delay;
           z-index: -1;
+          background: linear-gradient($primary-gradient);
+          border-radius: $border-radius-btn;
+          opacity: 0;
+          transition: $long-delay;
+          content: "";
         }
-        &:hover::after{
+        &:hover::after {
           opacity: 1;
         }
-      &::before{
-        content: '';
-        position: absolute;
+        &::before {
+          position: absolute;
           top: -2px;
+          right: -2px;
           bottom: -2px;
           left: -2px;
-          right: -2px;
-          border-radius:$border-radius-btn;
-          border:2px solid transparent;
-          color:#fff;
-          background:linear-gradient($primary-gradient) border-box;  
-          -webkit-mask:  
-             linear-gradient(#fff 0 0) padding-box, 
-             linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor; 
-                  mask-composite: exclude; 
-      } 
+          color: #fff;
+          background: linear-gradient($primary-gradient) border-box;
+          border: 2px solid transparent;
+          border-radius: $border-radius-btn;
+          content: "";
+          -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
       }
-    } 
+    }
+  }
+}
+
+.nft-era__button {
+  position: relative;
+  width: 8rem;
+  padding: 0.7143rem 0.4762rem 0.4762rem;
+  color: white;
+  font-weight: 400;
+  font-size: 0.5714rem;
+  font-family: "Mont";
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(
+    74.53deg,
+    rgba(39, 113, 233, 0.4) 0.04%,
+    rgba(121, 46, 231, 0.4) 27.39%,
+    rgba(168, 42, 204, 0.4) 58%,
+    rgba(213, 80, 75, 0.4) 90.58%
+  );
+  border: none;
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0.0476rem dashed rgba(#fff, 5);
+    content: "";
+  }
+  svg {
+    width: 0.5714rem;
+    height: 0.5714rem;
+    padding-bottom: 0.0952rem;
+  }
+}
+.nft-era__button_white {
+  background: none;
+  background-color: rgba(white, 0.1);
+}
+.base-text__white {
+  color: white;
+  font-weight: 300;
+  font-size: 0.6667rem;
+  line-height: 0.8571rem;
+  letter-spacing: 0.03em;
+  &_muffled {
+    opacity: 0.7;
   }
 }
 
 .navbar {
   &__link {
-    font-size: 1.0476rem;
     font-weight: 300;
+    font-size: 1.0476rem;
   }
 }
 // =================================================
 
 .form {
   &-control {
+    padding: 0.8125rem 0.6875rem 0.6875rem 1.125rem;
+    font-size: 0.875rem;
     background: transparent;
+    border-top-color: #fff6;
+    border-right-color: #eeeded54;
     border-bottom-color: #eeeded54;
     border-left-color: #fff6;
-    border-right-color: #eeeded54;
-    border-top-color: #fff6;
     border-radius: $border-radius;
-    font-size: 0.875rem;
-    padding: 0.8125rem 0.6875rem 0.6875rem 1.125rem;
     &,
     &::placeholder {
-      background: linear-gradient($secondary-gradient);
-      background-clip: text;
-      -webkit-background-clip: text;
       display: inline-block;
+      background: linear-gradient($secondary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     &:focus,
     &:active {
-      // background-color: $secondary;
       border-color: $secondary !important;
       box-shadow: none;
       & + .form-control-feedback {
@@ -662,9 +705,9 @@ input[type="number"] {
   right: 1rem;
 }
 .card {
+  color: #9ba9ba;
   background: #040426;
   border: 0;
-  color: #9ba9ba;
 
   &-body {
     padding: 1.75rem 1.1875rem 3rem;
@@ -672,13 +715,13 @@ input[type="number"] {
 }
 
 .input {
+  padding: 0.625rem;
   border: 1px solid lightgrey;
   border-radius: 0.625rem;
-  padding: 0.625rem;
   transition: all ease-out 0.15s;
   &:focus {
-    outline: 3px solid var(--indigo);
     border: 1px solid var(--indigo);
+    outline: 3px solid var(--indigo);
   }
 }
 

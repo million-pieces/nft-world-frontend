@@ -22,7 +22,7 @@ export default {
       const cordFactor = this.cordFactor;
       const halfCordFactor = cordFactor / 2;
       // basic colors
-      const baseColor = "0xfffffd";
+      const baseColor = this.baseSegmentColor;
       const dangerColor = "0xff1a00";
       //map
       const mapContainer = new Container();

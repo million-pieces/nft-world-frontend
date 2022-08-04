@@ -2,6 +2,10 @@ html {
   font-size: 16px;
 }
 
+.map-container {
+  cursor: grab;
+}
+
 .has-search {
   position: relative;
   .form {

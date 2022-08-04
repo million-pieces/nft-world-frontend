@@ -6,6 +6,7 @@
     </picture>
     <div class="app-wrap">
       <app-navbar />
+
       <nuxt />
 
       <app-toast />
@@ -56,9 +57,7 @@ export default {
       this.isOpenJoinGamePopup = true;
     });
   },
-  mounted() {
-    this.autoLogin();
-  },
+  mounted() {},
   beforeDestroy() {
     this.$nuxt.$off("openGamePopup");
     this.$nuxt.$off("openJoinGamePopup");

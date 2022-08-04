@@ -25,6 +25,7 @@ $main_color: #fff;
 $link_color: #6c5dd3;
 
 $popup_color: rgba(116, 63, 221, 0.95);
+$game-bg_color: #261d39;
 
 $border-radius: 0.625rem !default;
 $border-radius-sm: 0.3125rem !default;
@@ -39,6 +40,7 @@ $long-delay: 300ms;
 
 $rainbow-gradient: linear-gradient(74.53deg, #d4504b 0.04%, #a82acc 27.39%, #792ee7 58%, #2771e9 90.58%);
 $primary-gradient: 74.53deg, $primary 0.04%, $info 27.39%, $pink 58%, $danger 90.58%;
+$light-gradient: 74.53deg, #ffffff 0.04%, #792ee7 27.39%, #a82acc 58%, #d5504b 90.58%;
 $primary-gradient-btn: 74deg, rgba(131, 42, 209, 1) 0%, rgba(39, 113, 233, 1) 40%, rgba(121, 46, 231, 1) 63%, rgba(168, 42, 204, 1) 84%,
   rgba(212, 80, 75, 1) 94%; 
 $secondary-gradient-btn: 77.7deg, #2771E9 35%, #792EE7 70%, #A82ACC 100%;  

@@ -25,7 +25,7 @@ export default {
       const mergedSegmentPadding = halfCordFactor / 9;
       const activeSegmentBorderWidth = halfCordFactor / 3.5;
       // basic colors
-      const baseColor = "0xfffffd";
+      const baseColor = this.baseSegmentColor;
       const ownedColor = "0xd94efc";
       const activeColor = "0x000000";
       const successColor = "0x1ad94d";
@@ -424,7 +424,10 @@ export default {
           this.isToggledSegmentImgRefresh = false;
         }
         if (this.isDestroyMap) {
-          app.destroy(true);
+          mapContainer.children.forEach((child) => {
+            child.interactive = false;
+          });
+          app.destroy(true, {children: true});
           this.isDestroyMap = false;
         }
       });
