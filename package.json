@@ -42,7 +42,7 @@
     "core-js": "^3.6.5",
     "countup.js": "^2.0.7",
     "cross-env": "^7.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fortmatic": "^2.2.1",
     "fs": "0.0.1-security",
     "graphql-tag": "^2.11.0",
